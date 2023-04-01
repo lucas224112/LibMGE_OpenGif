@@ -4,7 +4,7 @@ import MGE
 MGE.Program.init()
 
 gif = MGE.Object2D([0, 0], 0, [500, 500])
-gif.set_material(MGE.Material(MGE.Texture(MGE.Image("./img.gif"))))
+gif.set_material(MGE.Material(MGE.Texture(MGE.Image("./image.gif"))))
 
 MGE.Program.screen.set_size(500, 500)
 MGE.Program.set_clock(120)
