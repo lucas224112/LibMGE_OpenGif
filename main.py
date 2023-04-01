@@ -10,7 +10,7 @@ MGE.Program.screen.set_size(500, 500)
 MGE.Program.set_clock(120)
 
 while True:
-    if MGE.Program.event.type == 256 or MGE.keyboard("f1"):
+    if MGE.Program.event.type == MGE.Screen_inputs.quit or MGE.keyboard("f1"):
         sys.exit()
 
     gif.draw_object(MGE.Program.screen)
