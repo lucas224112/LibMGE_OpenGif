@@ -1,19 +1,20 @@
-import sys
 import MGE
 
-MGE.Program.init()
+MGE.init()
+
+window = MGE.Window(resolution=(500, 500), flags=MGE.WindowFlag.Shown)
+window.limit_time = 60
 
 gif = MGE.Object2D([0, 0], 0, [500, 500])
-gif.set_material(MGE.Material(MGE.Texture(MGE.Image("./image.gif"))))
-
-MGE.Program.screen.set_size(500, 500)
-MGE.Program.set_clock(120)
+gif.material = MGE.Material(MGE.Texture(MGE.LoadImage("./image.gif")))
 
 while True:
-    if MGE.Program.event.type == MGE.Screen_inputs.quit or MGE.keyboard("f1"):
-        sys.exit()
+    MGE.update()
+    window.update()
 
-    gif.draw_object(MGE.Program.screen)
+    window.title = f"LibMGE OpenGif | FPS: {int(window.fps)}"
 
-    MGE.Program.set_caption(f"Gif-MGE | FPS:{int(MGE.Program.get_fps())}")
-    MGE.Program.update(False, False)
+    if MGE.QuitEvent() or MGE.keyboard(MGE.KeyboardButton.F1):
+        exit()
+
+    gif.draw_object(window)
